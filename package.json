@@ -15,6 +15,7 @@
   },
   "description": "A media library server and browser.",
   "devDependencies": {
+    "@semantic-release/changelog": "3.0.2",
     "@semantic-release/git": "7.0.8",
     "@types/cosmiconfig": "5.0.3",
     "@types/cron": "1.6.1",
