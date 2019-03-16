@@ -1,11 +1,12 @@
 {
   "author": "Florian Keller <github@floriankeller.de>",
   "bin": {
-    "ordinem": "dist/server/cli.js"
+    "ordinem": "dist/cli.js"
   },
   "dependencies": {
     "commander": "2.19.0",
     "cosmiconfig": "5.1.0",
+    "cron": "1.7.0",
     "cross-env": "5.2.0",
     "fs-extra": "7.0.1",
     "hapi": "18.1.0",
@@ -16,6 +17,7 @@
   "devDependencies": {
     "@semantic-release/git": "7.0.8",
     "@types/cosmiconfig": "5.0.3",
+    "@types/cron": "1.6.1",
     "@types/fs-extra": "5.0.5",
     "@types/hapi": "18.0.1",
     "@types/node": "11.11.3",
@@ -50,7 +52,7 @@
       "git add"
     ]
   },
-  "main": "dist/server/index.js",
+  "main": "dist/index.js",
   "name": "ordinem",
   "repository": "https://github.com/ffflorian/ordinem.git",
   "scripts": {
@@ -62,7 +64,7 @@
     "lint:ts": "tslint --config tslint.json --project tsconfig.json \"**/*.ts\"",
     "prettier": "prettier --ignore-path .gitignore \"**/*.ts\"",
     "release": "semantic-release",
-    "start": "cross-env NODE_DEBUG=\"ordinem/*\" node dist/server/cli.js",
+    "start": "cross-env NODE_DEBUG=\"ordinem/*\" node dist/cli.js",
     "test": "exit 0"
   },
   "version": "0.0.1"

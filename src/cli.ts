@@ -3,15 +3,11 @@ import cosmiconfig = require('cosmiconfig');
 
 import {ServerConfig, defaultConfig} from './config';
 import {OrdinemServer} from './Server';
-import {formatDate, getLogger} from './util';
+import {ExtendedLogger} from './util';
 
-const logger = getLogger('cli');
+const logger = new ExtendedLogger('cli');
 
-const {
-  name,
-  version,
-  description,
-}: {name: string; version: string; description: string} = require('../../package.json');
+const {name, version, description}: {name: string; version: string; description: string} = require('../package.json');
 
 program
   .name(name)
@@ -50,24 +46,24 @@ program
 
   try {
     const port = await server.start();
-    logger.info(`[${formatDate()}] Server is running on port ${port}.`);
+    logger.info(`Server is running on port ${port}.`);
   } catch (error) {
-    logger.error(`[${formatDate()}] ${error.stack}`);
+    logger.error(error.stack);
   }
 
   process.on('SIGINT', () =>
     server
       .stop()
-      .then(() => logger.info(`[${formatDate()}] Server stopped.`))
+      .then(() => logger.info('Server stopped.'))
       .catch(logger.error)
   );
 
   process.on('uncaughtException', error => {
-    logger.error(`[${formatDate()}] Uncaught exception: ${error.message}`, error);
+    logger.error(`Uncaught exception: ${error.message}`, error);
   });
 
   process.on('unhandledRejection', (error, promise) => {
-    const logError = (error: Error | {}) => logger.error(`[${formatDate()}] Uncaught rejection`, error);
+    const logError = (error: Error | {}) => logger.error('Uncaught rejection', error);
     promise.catch(logError);
     if (error) {
       logError(error);
