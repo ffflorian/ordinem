@@ -1,30 +1,76 @@
-import * as logdown from 'logdown';
+import * as program from 'commander';
+import cosmiconfig = require('cosmiconfig');
 
-const logger = logdown('ordinem/cli', {
-  logger: console,
-  markdown: false,
-});
-
+import {ServerConfig, defaultConfig} from './config';
 import {OrdinemServer} from './Server';
-import {formatDate} from './util';
+import {formatDate, getLogger} from './util';
 
-const server = new OrdinemServer();
+const logger = getLogger('cli');
 
-server
-  .start()
-  .then(port => logger.info(`[${formatDate()}] Server is running on port ${port}.`))
-  .catch(error => logger.error(`[${formatDate()}] ${error.stack}`));
+const {
+  name,
+  version,
+  description,
+}: {name: string; version: string; description: string} = require('../../package.json');
 
-process.on('SIGINT', () => server.stop().then(() => logger.info(`[${formatDate()}] Server stopped.`)));
+program
+  .name(name)
+  .description(description)
+  .option('--noconfig', `don't look for a configuration file`)
+  .option('-p, --port <port>', 'set the server port', defaultConfig.port)
+  .option('-d, --dir <dir>', 'set the directory to serve', defaultConfig.dir)
+  .version(version, '-v, --version')
+  .parse(process.argv);
 
-process.on('uncaughtException', error => {
-  logger.error(`[${formatDate()}] Uncaught exception: ${error.message}`, error);
-});
+(async () => {
+  let config: ServerConfig = {};
 
-process.on('unhandledRejection', (error, promise) => {
-  const log = (error: Error | {}) => logger.error(`[${formatDate()}] Uncaught rejection`, error);
-  promise.catch(log);
-  if (error) {
-    log(error);
+  if (program.noconfig) {
+    logger.info('Not using any configuration file');
+  } else {
+    await cosmiconfig('ordinem')
+      .search()
+      .then(result => {
+        if (result) {
+          logger.info(`Found configuration file ${result.filepath}`);
+          config = result.config;
+        }
+      });
   }
-});
+
+  config = {
+    ...config,
+    ...(program.port && {port: program.port}),
+    ...(program.dir && {dir: program.dir}),
+  };
+
+  logger.info(`Configuration: ${JSON.stringify(config)}`);
+
+  const server = new OrdinemServer(config);
+
+  try {
+    const port = await server.start();
+    logger.info(`[${formatDate()}] Server is running on port ${port}.`);
+  } catch (error) {
+    logger.error(`[${formatDate()}] ${error.stack}`);
+  }
+
+  process.on('SIGINT', () =>
+    server
+      .stop()
+      .then(() => logger.info(`[${formatDate()}] Server stopped.`))
+      .catch(logger.error)
+  );
+
+  process.on('uncaughtException', error => {
+    logger.error(`[${formatDate()}] Uncaught exception: ${error.message}`, error);
+  });
+
+  process.on('unhandledRejection', (error, promise) => {
+    const logError = (error: Error | {}) => logger.error(`[${formatDate()}] Uncaught rejection`, error);
+    promise.catch(logError);
+    if (error) {
+      logError(error);
+    }
+  });
+})();
