@@ -1,5 +1,7 @@
 interface ServerConfig {
+  /** set the server port */
   dir?: string;
+  /** set the directory to serve */
   port?: number;
 }
 
