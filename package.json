@@ -67,5 +67,5 @@
     "start": "cross-env NODE_DEBUG=\"ordinem/*\" node dist/cli.js",
     "test": "exit 0"
   },
-  "version": "0.0.1"
+  "version": "1.0.0"
 }
