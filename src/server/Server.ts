@@ -1,26 +1,22 @@
 import * as hapi from 'hapi';
+import * as path from 'path';
 
-interface ServerOptions {
-  port?: number;
-}
-
-const defaultOptions: Required<ServerOptions> = {
-  port: 8000,
-};
+import {ServerConfig, defaultConfig} from './config';
 
 class OrdinemServer {
-  private readonly options: Required<ServerOptions>;
+  private readonly options: Required<ServerConfig>;
   private readonly hapi: hapi.Server;
 
-  constructor(options?: ServerOptions) {
+  constructor(options?: ServerConfig) {
     this.options = {
-      ...defaultOptions,
+      ...defaultConfig,
       ...options,
     };
     this.hapi = new hapi.Server({
       host: 'localhost',
       port: this.options.port,
     });
+    this.options.dir = path.resolve(this.options.dir);
   }
 
   public async start(): Promise<number> {
@@ -33,4 +29,4 @@ class OrdinemServer {
   }
 }
 
-export {OrdinemServer, ServerOptions};
+export {OrdinemServer};
