@@ -23,6 +23,10 @@ class ExtendedLogger {
     this.logger.info(`[${formatDate()}]`, ...args);
   }
 
+  log(...args: any[]) {
+    this.logger.log(`[${formatDate()}]`, ...args);
+  }
+
   warn(...args: any[]) {
     this.logger.warn(`[${formatDate()}]`, ...args);
   }

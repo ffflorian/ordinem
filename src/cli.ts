@@ -45,18 +45,12 @@ program
   const server = new OrdinemServer(config);
 
   try {
+    await server.init();
     const port = await server.start();
     logger.info(`Server is running on port ${port}.`);
   } catch (error) {
-    logger.error(error.stack);
+    logger.error(error);
   }
-
-  process.on('SIGINT', () =>
-    server
-      .stop()
-      .then(() => logger.info('Server stopped.'))
-      .catch(logger.error)
-  );
 
   process.on('uncaughtException', error => {
     logger.error(`Uncaught exception: ${error.message}`, error);
@@ -64,7 +58,7 @@ program
 
   process.on('unhandledRejection', (error, promise) => {
     const logError = (error: Error | {}) => logger.error('Uncaught rejection', error);
-    promise.catch(logError);
+    promise.catch(() => logError);
     if (error) {
       logError(error);
     }

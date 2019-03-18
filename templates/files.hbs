@@ -1,0 +1,14 @@
+{{#if files}}
+  <table>
+    <thead>
+      <td>Type</td>
+      <td>Path</td>
+    </thead>
+  {{#each files}}
+    <tr>
+      <td>{{type}}</td>
+      <td><a href="/file/{{path}}">{{path}}</a></td>
+    </tr>
+  {{/each}}
+  </table>
+{{/if}}
