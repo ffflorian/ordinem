@@ -62,11 +62,7 @@ program
     logger.error(`Uncaught exception: ${error.message}`, error);
   });
 
-  process.on('unhandledRejection', (error, promise) => {
-    const logError = (error: Error | {}) => logger.error('Uncaught rejection', error);
-    promise.catch(logError);
-    if (error) {
-      logError(error);
-    }
-  });
+  process.on('unhandledRejection', (reason, promise) =>
+    logger.error('Unhandled Rejection at:', promise, 'reason:', reason)
+  );
 })();
