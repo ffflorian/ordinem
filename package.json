@@ -30,7 +30,7 @@
     "tslint": "5.14.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.0.1",
-    "typescript": "3.3.4000"
+    "typescript": "3.4.1"
   },
   "files": [
     "dist"
@@ -48,7 +48,7 @@
       "tslint --config tslint.json --project tsconfig.json --fix",
       "git add"
     ],
-    "*.{json,md,css}": [
+    "*.{json,md}": [
       "prettier --write",
       "git add"
     ]
@@ -62,8 +62,8 @@
     "dist": "yarn clean && yarn build",
     "lint": "yarn lint:ts && yarn lint:other",
     "lint:other": "yarn prettier --list-different",
-    "lint:ts": "tslint --config tslint.json --project tsconfig.json \"**/*.ts\"",
-    "prettier": "prettier --ignore-path .gitignore \"**/*.ts\"",
+    "lint:ts": "tslint --project tsconfig.json",
+    "prettier": "prettier \"**/*.{json,md}\"",
     "release": "semantic-release",
     "start": "cross-env NODE_DEBUG=\"ordinem/*\" node dist/cli.js",
     "test": "exit 0"
