@@ -52,7 +52,7 @@
   "license": "MIT",
   "lint-staged": {
     "*.ts": [
-      "tslint --config tslint.json --project tsconfig.json --fix",
+      "tslint --project tsconfig.json --fix",
       "git add"
     ],
     "*.{json,md}": [
@@ -68,7 +68,10 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "dist": "yarn clean && yarn build",
-    "lint": "yarn lint:ts && yarn lint:other",
+    "fix": "yarn fix:other && yarn fix:ts",
+    "fix:other": "yarn prettier --write",
+    "fix:ts": "yarn lint:ts --fix",
+    "lint": "yarn lint:other && yarn lint:ts",
     "lint:other": "yarn prettier --list-different",
     "lint:ts": "tslint --project tsconfig.json",
     "prettier": "prettier \"**/*.{json,md}\"",
