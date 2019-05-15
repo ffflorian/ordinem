@@ -5,7 +5,7 @@
   },
   "dependencies": {
     "commander": "2.20.0",
-    "cosmiconfig": "5.2.0",
+    "cosmiconfig": "5.2.1",
     "cron": "1.7.1",
     "cross-env": "5.2.0",
     "fs-extra": "8.0.1",
