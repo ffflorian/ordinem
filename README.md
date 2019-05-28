@@ -1,4 +1,4 @@
-# ordinem [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/ordinem)](https://dependabot.com)
+# ordinem [![Build Status](https://action-badges.now.sh/ffflorian/ordinem)](https://github.com/ffflorian/ordinem/actions/) [![npm version](https://img.shields.io/npm/v/ordinem.svg?style=flat)](https://www.npmjs.com/package/ordinem) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ffflorian/ordinem)](https://dependabot.com)
 
 :open_file_folder: A media library server and browser.
 
