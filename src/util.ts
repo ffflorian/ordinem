@@ -11,19 +11,19 @@ class ExtendedLogger {
     });
   }
 
-  debug(...args: any[]) {
+  debug(...args: any[]): void {
     this.logger.debug(`[${formatDate()}]`, ...args);
   }
 
-  error(...args: any[]) {
+  error(...args: any[]): void {
     this.logger.error(`[${formatDate()}]`, ...args);
   }
 
-  info(...args: any[]) {
+  info(...args: any[]): void {
     this.logger.info(`[${formatDate()}]`, ...args);
   }
 
-  warn(...args: any[]) {
+  warn(...args: any[]): void {
     this.logger.warn(`[${formatDate()}]`, ...args);
   }
 }
