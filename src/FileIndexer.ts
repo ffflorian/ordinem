@@ -38,6 +38,10 @@ class FileIndexer {
     this.logger.info(`Updated file index. Found ${foundFiles} files.`);
   }
 
+  public getFiles(): Dir {
+    return this.fileIndex;
+  }
+
   private async walkAsync(dir: string): Promise<[Dir, number]> {
     let foundFiles = 0;
     const resolvedDir = path.resolve(dir);
@@ -78,10 +82,6 @@ class FileIndexer {
       },
       foundFiles,
     ];
-  }
-
-  public getFiles(): Dir {
-    return this.fileIndex;
   }
 }
 

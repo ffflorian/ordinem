@@ -33,6 +33,17 @@ class OrdinemServer {
     this.init();
   }
 
+  public async start(): Promise<number> {
+    await this.hapi.start();
+    await this.fileIndexer.updateIndex('server start');
+    return this.options.port;
+  }
+
+  public async stop(): Promise<void> {
+    await this.hapi.stop();
+    this.cronjob.stop();
+  }
+
   private init(): void {
     this.hapi.route({
       handler: () => ({
@@ -43,17 +54,6 @@ class OrdinemServer {
     });
     this.hapi.route(FileRoute(this.fileIndexer));
     this.cronjob.start();
-  }
-
-  public async start(): Promise<number> {
-    await this.hapi.start();
-    await this.fileIndexer.updateIndex('server start');
-    return this.options.port;
-  }
-
-  public async stop(): Promise<void> {
-    await this.hapi.stop();
-    this.cronjob.stop();
   }
 }
 
