@@ -7,7 +7,7 @@ import {ExtendedLogger} from './util';
 
 const logger = new ExtendedLogger('cli');
 
-const {name, version, description}: {name: string; version: string; description: string} = require('../package.json');
+const {name, version, description}: {description: string; name: string; version: string} = require('../package.json');
 
 program
   .name(name)
