@@ -7,10 +7,10 @@ import {FileIndexer} from './FileIndexer';
 import {FileRoute} from './routes';
 
 class OrdinemServer {
-  private readonly options: Required<ServerConfig>;
-  private readonly hapi: hapi.Server;
-  private readonly fileIndexer: FileIndexer;
   private readonly cronjob: CronJob;
+  private readonly fileIndexer: FileIndexer;
+  private readonly hapi: hapi.Server;
+  private readonly options: Required<ServerConfig>;
 
   constructor(options?: ServerConfig) {
     this.options = {

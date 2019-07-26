@@ -19,8 +19,8 @@ interface Index {
 
 class FileIndexer {
   private readonly baseDir: string;
-  private readonly logger: ExtendedLogger;
   private fileIndex: Dir;
+  private readonly logger: ExtendedLogger;
 
   constructor(baseDir: string) {
     this.baseDir = baseDir;
@@ -31,15 +31,15 @@ class FileIndexer {
     };
   }
 
+  public getFiles(): Dir {
+    return this.fileIndex;
+  }
+
   public async updateIndex(reason: string): Promise<void> {
     this.logger.info(`Updating file index (reason: ${reason}) ...`);
     const [newIndex, foundFiles] = await this.walkAsync(this.baseDir);
     this.fileIndex = newIndex;
     this.logger.info(`Updated file index. Found ${foundFiles} files.`);
-  }
-
-  public getFiles(): Dir {
-    return this.fileIndex;
   }
 
   private async walkAsync(dir: string): Promise<[Dir, number]> {
