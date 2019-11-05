@@ -222,13 +222,6 @@
   resolved "https://registry.npmjs.org/@types/catbox/-/catbox-10.0.6.tgz#8a4c91261cf0afca03351bb82a95b2d6cf43a5d0"
   integrity sha512-qS0VHlL6eBUUoUeBnI/ASCffoniS62zdV6IUtLSIjGKmRhZNawotaOMsTYivZOTZVktfe9koAJkD9XFac7tEEg==
 
-"@types/cosmiconfig@5.0.3":
-  version "5.0.3"
-  resolved "https://registry.npmjs.org/@types/cosmiconfig/-/cosmiconfig-5.0.3.tgz#880644bb155d4038d3b752159684b777b0a159dd"
-  integrity sha512-HgTGG7X5y9pLl3pixeo2XtDEFD8rq2EuH+S4mK6teCnAwWMucQl6v1D43hI4Uw1VJh6nu59lxLkqXHRl4uwThA==
-  dependencies:
-    "@types/node" "*"
-
 "@types/cron@1.7.1":
   version "1.7.1"
   resolved "https://registry.npmjs.org/@types/cron/-/cron-1.7.1.tgz#752e47ebbe26e83d9e40f2dd6a3f679f2eec54b8"

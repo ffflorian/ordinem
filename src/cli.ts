@@ -1,5 +1,5 @@
 import * as program from 'commander';
-import cosmiconfig = require('cosmiconfig');
+import {cosmiconfig} from 'cosmiconfig';
 
 import {ServerConfig, defaultConfig} from './config';
 import {OrdinemServer} from './Server';
@@ -24,14 +24,11 @@ program
   if (program.noconfig) {
     logger.info('Not using any configuration file');
   } else {
-    await cosmiconfig('ordinem')
-      .search()
-      .then(result => {
-        if (result) {
-          logger.info(`Found configuration file ${result.filepath}`);
-          config = result.config;
-        }
-      });
+    const result = await cosmiconfig('ordinem').search();
+    if (result) {
+      logger.info(`Found configuration file ${result.filepath}`);
+      config = result.config;
+    }
   }
 
   config = {
@@ -65,4 +62,4 @@ program
   process.on('unhandledRejection', (reason, promise) =>
     logger.error('Unhandled Rejection at:', promise, 'reason:', reason)
   );
-})().catch(console.error);
+})().catch(logger.error);
