@@ -21,7 +21,7 @@
     "@semantic-release/git": "7.0.18",
     "@types/cron": "1.7.1",
     "@types/fs-extra": "8.0.1",
-    "@types/hapi": "18.0.2",
+    "@types/hapi": "18.0.3",
     "@types/node": "~12",
     "husky": "3.0.9",
     "lint-staged": "9.4.2",
