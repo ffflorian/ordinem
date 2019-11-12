@@ -4,7 +4,7 @@
     "ordinem": "dist/cli.js"
   },
   "dependencies": {
-    "commander": "4.0.0",
+    "commander": "4.0.1",
     "cosmiconfig": "6.0.0",
     "cron": "1.7.2",
     "cross-env": "6.0.3",
