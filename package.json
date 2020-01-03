@@ -16,7 +16,7 @@
   "description": "A media library server and browser.",
   "devDependencies": {
     "@ffflorian/prettier-config": "0.0.5",
-    "@ffflorian/tslint-config": "0.7.0",
+    "@ffflorian/tslint-config": "0.7.1",
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "7.0.18",
     "@types/cron": "1.7.1",
