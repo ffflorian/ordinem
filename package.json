@@ -23,7 +23,7 @@
     "@types/fs-extra": "8.0.1",
     "@types/hapi": "18.0.3",
     "@types/node": "~12",
-    "husky": "4.0.2",
+    "husky": "4.0.5",
     "lint-staged": "9.5.0",
     "prettier": "1.19.1",
     "rimraf": "3.0.0",
