@@ -6,7 +6,7 @@
   "dependencies": {
     "commander": "4.1.0",
     "cosmiconfig": "6.0.0",
-    "cron": "1.8.1",
+    "cron": "1.8.2",
     "cross-env": "6.0.3",
     "fs-extra": "8.1.0",
     "hapi": "18.1.0",
