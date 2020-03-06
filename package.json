@@ -7,7 +7,7 @@
     "commander": "4.1.1",
     "cosmiconfig": "6.0.0",
     "cron": "1.8.2",
-    "cross-env": "7.0.1",
+    "cross-env": "7.0.2",
     "fs-extra": "8.1.0",
     "hapi": "18.1.0",
     "logdown": "3.3.0",
