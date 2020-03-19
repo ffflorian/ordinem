@@ -10,7 +10,7 @@
     "cross-env": "7.0.2",
     "fs-extra": "8.1.0",
     "hapi": "18.1.0",
-    "logdown": "3.3.0",
+    "logdown": "3.3.1",
     "moment": "2.24.0"
   },
   "description": "A media library server and browser.",
