@@ -13,7 +13,7 @@ program
   .name(name)
   .description(description)
   .option('--noconfig', `don't look for a configuration file`)
-  .option('-p, --port <port>', 'set the server port', defaultConfig.port)
+  .option('-p, --port <port>', 'set the server port', defaultConfig.port.toString())
   .option('-d, --dir <dir>', 'set the directory to serve', defaultConfig.dir)
   .version(version, '-v, --version')
   .parse(process.argv);
