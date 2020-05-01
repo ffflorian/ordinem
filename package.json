@@ -11,7 +11,7 @@
     "fs-extra": "9.0.0",
     "hapi": "18.1.0",
     "logdown": "3.3.1",
-    "moment": "2.24.0"
+    "moment": "2.25.0"
   },
   "description": "A media library server and browser.",
   "devDependencies": {
